@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environments
+.venv/
+.venv_*/
+venv/
+env/
+
+# Local tool/cache folders
+.codegraph/
+.agents/
+.matplotlib/
+
+# Training/runtime outputs
+tmp/
+model/
+kifu_new/
+kifu_train/
+kifu_old/
+*.lock
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
