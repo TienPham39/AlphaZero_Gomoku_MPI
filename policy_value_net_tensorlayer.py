@@ -5,10 +5,16 @@ Created on Sat Dec  8 13:02:14 2018
 @author: initial-h
 """
 
+import os
+
+_REPO_DIR = os.path.dirname(os.path.abspath(__file__))
+os.environ.setdefault("PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION", "python")
+os.environ.setdefault("MPLCONFIGDIR", os.path.join(_REPO_DIR, ".matplotlib"))
+os.makedirs(os.environ["MPLCONFIGDIR"], exist_ok=True)
+
 import tensorflow as tf
 import tensorlayer as tl
 from tensorlayer.layers import *
-import os
 import numpy as np
 
 
@@ -35,7 +41,7 @@ class PolicyValueNet():
         if gpu_memory_fraction:
             config.gpu_options.per_process_gpu_memory_fraction = float(gpu_memory_fraction)
 
-        self.session = tf.InteractiveSession()
+        self.session = tf.InteractiveSession(config=config)
         # 1. Input:
         self.input_states = tf.placeholder(
             tf.float32, shape=[None, self.planes_num, board_height, board_width])
