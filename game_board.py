@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Created on Fri Dec  7 15:14:24 2018
 
@@ -7,7 +7,6 @@ Created on Fri Dec  7 15:14:24 2018
 
 import numpy as np
 from collections import deque
-from GUI_v1_4 import GUI
 
 class Board(object):
     '''
@@ -119,7 +118,7 @@ class Board(object):
                         square_state[j][self.states_sequence[i][0] // self.width, self.states_sequence[i][0] % self.height] = 0.
 
         if len(self.states) % 2 == 0:
-            # if %2==0，it's player1's turn to player,then we assign 1 to the the whole plane,otherwise all 0
+            # if %2==0ï¼Œit's player1's turn to player,then we assign 1 to the the whole plane,otherwise all 0
             square_state[self.feature_planes][:, :] = 1.0  # indicate the colour to play
 
         # we should reverse it before return,for example the board is like
@@ -140,7 +139,7 @@ class Board(object):
         self.states[move] = self.current_player
         # save the move in states
         self.states_sequence.appendleft([move,self.current_player])
-        # save the last some moves in deque，so as to construct the binary feature planes
+        # save the last some moves in dequeï¼Œso as to construct the binary feature planes
         self.availables.remove(move)
         #remove the played move from self.availables
         self.current_player = (
@@ -294,6 +293,8 @@ class Game(object):
         '''
         a GUI for playing
         '''
+        from GUI_v1_4 import GUI
+
         AI.reset_player()
         self.board.init_board()
         current_player = SP = start_player
@@ -395,5 +396,6 @@ class Game(object):
                     else:
                         print("Game end. Tie")
                 return winner, zip(states, mcts_probs, winners_z)
+
 
 

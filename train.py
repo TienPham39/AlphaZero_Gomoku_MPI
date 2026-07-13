@@ -69,14 +69,14 @@ class TrainPipeline():
         self.game = Game(self.board)
         # training params
         self.learn_rate = 1e-3
-        self.n_playout = 400  # num of simulations for each move
+        self.n_playout = 200  # num of simulations for each move
         self.c_puct = 5
-        self.buffer_size = 500000 # memory size
-        self.batch_size = 512  # mini-batch size for training
+        self.buffer_size = 2000 # memory size
+        self.batch_size = 32  # mini-batch size for training
         self.data_buffer = deque(maxlen=self.buffer_size)
         self.play_batch_size = 1 # play n games for each network training
-        self.check_freq = 50
-        self.game_batch_num = 100000 # total game to train
+        self.check_freq = 2
+        self.game_batch_num = 10 # total game to train
         self.best_win_ratio = 0.0
         # num of simulations used for the pure mcts, which is used as
         # the opponent to evaluate the trained policy

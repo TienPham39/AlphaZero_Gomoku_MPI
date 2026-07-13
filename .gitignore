@@ -27,3 +27,9 @@ kifu_old/
 Thumbs.db
 .vscode/
 .idea/
+
+log/
+report/
+little_golem_mini/
+greedy_ai_gomoku.py
+greedy_vs_alphazero.py
